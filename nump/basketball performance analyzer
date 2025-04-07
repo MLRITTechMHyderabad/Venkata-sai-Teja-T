@@ -1,0 +1,34 @@
+import numpy as np
+from numpy import random
+s=random.randint(1,100,size=(5,10))
+print(s)
+print("average points:",np.mean(s,axis=1))
+print()
+l=np.sum(s,axis=1)
+best=[]
+
+for i in range(5):
+  best.append(int(sum((s[i]))))
+
+print(best)
+print(f"best performing player: {best.index(max(best))+1} total points:{max(best)}")
+print(f"worst performing player: {best.index(min(best))+1} total points:{min(best)}")
+print()
+print("games with scores above 30:")
+
+for i in range(5):
+  mask=[]
+  for j in range(10):
+    if s[i][j]>30:
+      mask.append(j)
+  if len(mask)>0:
+    print(f"player {i+1}: games {mask}")
+
+
+bes=best.copy()
+best.sort(reverse=True)
+for i in range(len(best)):
+  print(f"player {bes.index(best[i])} - {best[i]} points")
+
+
+
